@@ -23,7 +23,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = 'QCArchive Examples'
+project = 'QCArchive Infrastructure'
 copyright = f'2018-{datetime.datetime.today().year}, The Molecular Sciences Software Institute'
 author = 'The QCArchive Development Team'
 
@@ -190,22 +190,20 @@ texinfo_documents = [
 
 # -- Extension configuration -------------------------------------------------
 
-extlinks = {
-    'issue': ('https://github.com/MolSSI/QCFractal/issues/%s', 'GH#'),
-    'pr': ('https://github.com/MolSSI/QCFractal/pull/%s', 'GH#')
-}
+extlinks = {}
 
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'python': ('https://docs.python.org/3.7', None),
-                       'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-                       'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
-                       'matplotlib': ('https://matplotlib.org/', None),
-                       'qcelemental': ('https://qcelemental.readthedocs.io/en/latest/', None),
-                       'qcengine': ('https://qcengine.readthedocs.io/en/latest/', None),
-                       'qcfractal': ('https://qcfractal.readthedocs.io/en/latest/', None),
-                      }
+intersphinx_mapping = {}
+                      #{'python': ('https://docs.python.org/3.7', None),
+                      # 'numpy': ('https://docs.scipy.org/doc/numpy/', None),
+                      # 'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
+                      # 'matplotlib': ('https://matplotlib.org/', None),
+                      # 'qcelemental': ('https://qcelemental.readthedocs.io/en/latest/', None),
+                      # 'qcengine': ('https://qcengine.readthedocs.io/en/latest/', None),
+                      # 'qcfractal': ('https://qcfractal.readthedocs.io/en/latest/', None),
+                      #}
 intersphinx_mapping = {} # Currently not used
 
 # -- Options for todo extension ----------------------------------------------
@@ -215,3 +213,10 @@ todo_include_todos = True
 
 html_context = {'extra_js_files': ["https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"]}
 
+# Abbreviations
+rst_epilog = """
+.. |join_slack_lower| replace:: join our Slack group
+.. _join_slack_lower: https://join.slack.com/t/qcdb/shared_invite/enQtNDIzNTQ2OTExODk0LWM3OTgxN2ExYTlkMTlkZjA0OTExZDlmNGRlY2M4NWJlNDlkZGQyYWUxOTJmMzc3M2VlYzZjMjgxMDRkYzFmOTE
+.. |join_slack_upper| replace:: Join our Slack group
+.. _join_slack_upper: https://join.slack.com/t/qcdb/shared_invite/enQtNDIzNTQ2OTExODk0LWM3OTgxN2ExYTlkMTlkZjA0OTExZDlmNGRlY2M4NWJlNDlkZGQyYWUxOTJmMzc3M2VlYzZjMjgxMDRkYzFmOTE
+"""
