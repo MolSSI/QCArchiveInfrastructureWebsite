@@ -60,8 +60,8 @@ extensions = [
 nbsphinx_prolog = """
 {% set docname = env.doc2path(env.docname, base=None) %}
 
-You can run this notebook online in a `Binder <https://mybinder.org/v2/gh/MolSSI/QCArchiveExamples/master?urlpath=lab/tree/{{ docname }}>`_
-session or view it `on Github <https://github.com/MolSSI/QCArchiveExamples/blob/master/{{ docname }}>`_.
+You can run this notebook online in a `Binder <https://mybinder.org/v2/gh/MolSSI/QCArchiveInfrastructure-Website/master?urlpath=lab/tree/{{ docname }}>`_
+session or view it `on Github <https://github.com/MolSSI/QCArchiveInfrastructure-Website/blob/master/{{ docname }}>`_.
 
 
 """
