@@ -1,15 +1,16 @@
 QCArchive Infrastructure
 ========================
-The infrastructure that powers the MolSSI QCArchive is made up of a series of
-open-source layers that can be used for a variety of projects and use cases.
-Every piece of software that we develop is available on GitHub and supported by
-the MolSSI team.
+The infrastructure that powers the MolSSI QCArchive is a series of open-source
+layers that can be used for a variety of projects and use cases.  Every piece
+of software that we develop is available on GitHub and supported by the MolSSI
+team.
 
-At the outer most scope the QCArchive infrastructure allows you to generate
-data precisely as we do in QCArchive and run the same statistical and visual
-analysis without interacting with the MolSSI servers and instead, hold the data
-privately. In addition, at a later data if you would like to upload your data
-to the MolSSI servers it is a very quick and easy process!
+At the outermost scope, the QCArchive infrastructure allows you to privately
+generate and manage data precisely as we do in QCArchive, running the
+calculations and performing statistical and visual analysis without ever
+interacting with the MolSSI servers. At a later date (perhaps
+post-publication), if you would like to upload your data to the MolSSI servers,
+it is a very quick and easy process!
 
 .. image:: media/boxology_private.png
    :width: 80%
@@ -19,9 +20,8 @@ to the MolSSI servers it is a very quick and easy process!
 Layered Infrastructure
 ----------------------
 
-While the infrastructure can be used as a single unit to manage data at scale
-each library that we support can be used individually for many uses outside of
-data management.  The capabilities of each library are as follows:
+While the infrastructure projects can be used together to manage data at scale,
+each library we support has capabilities that can be used independently:
 
 - |qcelemental_docs|_ - Periodic table information, version-controlled physical constants, molecule parsing, testing infrastructure, and MolSSI QCSchema models.
 - |qcengine_docs|_ - Quantum chemistry program executor and IO standardizer (QCSchema).
@@ -40,7 +40,7 @@ A few projects in which the QCArchive infrastructure is being implemented are as
 
 Project Demos
 -------------
-To highlight the capabailities of each project, short demoss were created.
+To highlight the capabailities of each project, short demos were created.
 Full details can be found by going to each projects Documentation page which
 can be found in the dropdown at the top of this page.
 
