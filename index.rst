@@ -12,7 +12,7 @@ privately. In addition, at a later data if you would like to upload your data
 to the MolSSI servers it is a very quick and easy process!
 
 .. image:: media/boxology_private.png
-   :width: 800px
+   :width: 80%
    :alt: QCArchive ecosystem
    :align: center
 
@@ -47,7 +47,43 @@ can be found in the dropdown at the top of this page.
 - `QCElemental <basic_examples/QCElemental.html>`_
 - `QCEngine <basic_examples/QCEngine.html>`_
 
+Supported by
+------------
+The QCArchive infrastructure is supported by the `Molecular Science Software Institute <https://molssi.org>`_ and the `National Science Foundation <https://www.nsf.gov>`_
 
+.. raw:: html
+    
+    <div style="width: 50%; margin: auto; padding: 10px">
+    <style scoped type="text/css">
+    
+    img.logo-row {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+        passing: 10px;
+    }
+    </style>
+    
+    <a href="https://molssi.org"><img class="logo-row" src="_images/molssi-logo.png" alt="MolSSI"></a>
+    <a href="https://www.nsf.gov"><img class="logo-row" src="_images/nsf.png" alt="NSF"></a>
+    </div>
+
+.. Makes the above html work 
+
+.. |molssi_logo| image:: media/molssi-logo.png
+   :width: 150px
+
+.. |nsf_logo| image:: media/nsf.png
+   :width: 150px
+
+
+
+Additional features are sponsored by our partners:
+
+- `Open Force Field Initiative <https://openforcefield.org>`_
+
+Consider becoming a feature sponsor `today <community.html#work-with-us>`_!
 
 .. toctree::
    :maxdepth: 1
