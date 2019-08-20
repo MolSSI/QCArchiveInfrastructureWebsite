@@ -215,6 +215,18 @@ html_context = {'extra_js_files': ["https://cdnjs.cloudflare.com/ajax/libs/requi
 
 # Abbreviations
 rst_epilog = """
+.. |qcelemental_docs| replace:: QCElemental
+.. _qcelemental_docs: http://docs.qcarchive.molssi.org/projects/qcelemental
+
+.. |qcengine_docs| replace:: QCEngine
+.. _qcengine_docs: http://docs.qcarchive.molssi.org/projects/qcengine
+
+.. |qcfractal_docs| replace:: QCFractal
+.. _qcfractal_docs: http://docs.qcarchive.molssi.org/projects/qcfractal
+
+.. |qcportal_docs| replace:: QCPortal
+.. _qcportal_docs: http://docs.qcarchive.molssi.org/projects/qcportal
+
 .. |join_slack_lower| replace:: join our Slack group
 .. _join_slack_lower: https://join.slack.com/t/qcdb/shared_invite/enQtNDIzNTQ2OTExODk0LWM3OTgxN2ExYTlkMTlkZjA0OTExZDlmNGRlY2M4NWJlNDlkZGQyYWUxOTJmMzc3M2VlYzZjMjgxMDRkYzFmOTE
 .. |join_slack_upper| replace:: Join our Slack group
