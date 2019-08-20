@@ -65,18 +65,9 @@ The QCArchive infrastructure is supported by the `Molecular Science Software Ins
     }
     </style>
     
-    <a href="https://molssi.org"><img class="logo-row" src="_images/molssi-logo.png" alt="MolSSI"></a>
-    <a href="https://www.nsf.gov"><img class="logo-row" src="_images/nsf.png" alt="NSF"></a>
+    <a href="https://molssi.org"><img class="logo-row" src="_static/images/molssi-logo.png" alt="MolSSI"></a>
+    <a href="https://www.nsf.gov"><img class="logo-row" src="_static/images/nsf.png" alt="NSF"></a>
     </div>
-
-.. Makes the above html work 
-
-.. |molssi_logo| image:: media/molssi-logo.png
-   :width: 150px
-
-.. |nsf_logo| image:: media/nsf.png
-   :width: 150px
-
 
 
 Additional features are sponsored by our partners:

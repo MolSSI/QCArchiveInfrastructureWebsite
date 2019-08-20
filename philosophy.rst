@@ -7,7 +7,7 @@ There are a variety of ways to help support the QCArchive project as seen
 below.
 
 Open-source infrastructure
--------------------------
+--------------------------
 
 The QCArchive project is designed from the start to be open-source and available to
 the computational molecular sciences community. The entire code base is public
