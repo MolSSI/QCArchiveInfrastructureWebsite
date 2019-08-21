@@ -93,4 +93,5 @@ Consider becoming a feature sponsor `today <community.html#work-with-us>`_!
    basic_examples/QCElemental.ipynb
    basic_examples/QCEngine.ipynb
    basic_examples/QCFractal.ipynb
+   basic_examples/QCPortal.ipynb
 
