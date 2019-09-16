@@ -97,3 +97,25 @@ Consider becoming a feature sponsor `today <community.html#work-with-us>`_!
    basic_examples/QCFractal.ipynb
    basic_examples/QCPortal.ipynb
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Module Documentation
+   :hidden:
+
+   QCElemental <http://docs.qcarchive.molssi.org/projects/QCElemental/en/stable/>
+   QCEngine <http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/>
+   QCFractal <http://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/>
+   QCPortal <http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: API Documentation
+   :hidden:
+
+   QCElemental <http://docs.qcarchive.molssi.org/projects/QCElemental/en/stable/api.html>
+   QCEngine <http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/api.html>
+   QCFractal <http://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/api.html>
+   QCPortal <http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/client-api.html>
+   Records <http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/record-api.html>
+   REST API <http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/rest-api.html>
+   Queue Managers <http://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/managers_config_api.html>
