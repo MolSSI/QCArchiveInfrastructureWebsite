@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCEngine &mdash; QCArchive Infrastructure 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QCFractal" href="QCFractal.html" />
+    <link rel="prev" title="QCElemental" href="QCElemental.html" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> QCArchive Infrastructure
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../philosophy.html">Software Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Community</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Module Demos</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="QCElemental.html">QCElemental</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QCEngine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Single-Computations">Single Computations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Procedures">Procedures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QCFractal.html">QCFractal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QCPortal.html">QCPortal</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Module Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCElemental/en/stable/">QCElemental</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/">QCEngine</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/">QCFractal</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/">QCPortal</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCElemental/en/stable/api.html">QCElemental</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/api.html">QCEngine</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCFractal/en/stable/api.html">QCFractal</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/client-api.html">QCPortal</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCPortal/en/stable/rest-api.html">REST API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QCArchive Infrastructure</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>QCEngine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basic_examples/QCEngine.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<p>You can run this notebook online in a <a href="https://mybinder.org/v2/gh/MolSSI/QCArchiveInfrastructureWebsite/master?urlpath=lab/tree/basic_examples/QCEngine.ipynb" target="_blank">Binder</a>
+session or view it <a class="reference external" href="https://github.com/MolSSI/QCArchiveInfrastructureWebsite/blob/master/basic_examples/QCEngine.ipynb">on Github</a>.</p>
+<section id="QCEngine">
+<h1>QCEngine<a class="headerlink" href="#QCEngine" title="Permalink to this headline"></a></h1>
+<p>Full <a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCEngine">QCEngine documentation</a> is available.</p>
+<p>QCEngine is a quantum chemistry abstraction layer where many different quantum chemistry (or quantum-chemistry-like!) programs can be run with identical input and output abstractions that match the <a class="reference external" href="https://github.com/MolSSI/QCSchema">MolSSI QCSchema</a>.</p>
+<p>Begin by importing <code class="docutils literal notranslate"><span class="pre">qcengine</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qcelemental</span> <span class="k">as</span> <span class="nn">qcel</span>
+<span class="kn">import</span> <span class="nn">qcengine</span> <span class="k">as</span> <span class="nn">qcng</span>
+</pre></div>
+</div>
+</div>
+<p>We can list all programs that QCEngine currently supports. It should be noted that there are many programs which provide force field or machine learning potential evaluation (e.g. <code class="docutils literal notranslate"><span class="pre">rdkit</span></code> and <code class="docutils literal notranslate"><span class="pre">torchani</span></code>) in addition to the traditional quantum chemistry programs.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qcng</span><span class="o">.</span><span class="n">list_all_programs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;dftd3&#39;,
+ &#39;entos&#39;,
+ &#39;molpro&#39;,
+ &#39;mopac&#39;,
+ &#39;mp2d&#39;,
+ &#39;psi4&#39;,
+ &#39;rdkit&#39;,
+ &#39;terachem&#39;,
+ &#39;torchani&#39;}
+</pre></div></div>
+</div>
+<p>We can then list all programs that QCEngine has detected on the current resource. This list will vary depending on installed packages. As a note, QCEngine does not install programs by default, and these must be installed separately.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qcng</span><span class="o">.</span><span class="n">list_available_programs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;dftd3&#39;, &#39;mopac&#39;, &#39;psi4&#39;, &#39;rdkit&#39;}
+</pre></div></div>
+</div>
+<section id="Single-Computations">
+<h2>Single Computations<a class="headerlink" href="#Single-Computations" title="Permalink to this headline"></a></h2>
+<p>QCEngine makes the distinction between a “single” evaluation which corresponds to a single molecular geometry and a “procedure” which involves multiple geometries or multiple molecules. “Single” evaluations include energy, gradient, Hessian, and property quantities. “Procedures” include geometry optimization and other complex multi-step procedures.</p>
+<p>First, we can build a Molecule object using the QCElemental molecule builder:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">qcel</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]],</span>
+                           <span class="n">symbols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">],</span>
+                           <span class="n">connectivity</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">mol</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div id="3dmolviewer_15663377869586968"  style="position: relative; width: 400px; height: 400px">
+        <p id="3dmolwarning_15663377869586968" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the 3dmol extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://3dmol.csb.pitt.edu/build/3Dmol.js');
+}
+
+var viewer_15663377869586968 = null;
+var warn = document.getElementById("3dmolwarning_15663377869586968");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_15663377869586968 = $3Dmol.createViewer($("#3dmolviewer_15663377869586968"),{backgroundColor:"white"});
+    viewer_15663377869586968.addModel("3\nH2O\nO                     0.000000000000     0.000000000000     0.000000000000\nH                     0.000000000000     0.793765816005     0.000000000000\nH                     0.000000000000     0.000000000000     0.793765816005\n","xyz");
+    viewer_15663377869586968.setStyle({"stick": {"radius": 0.2}, "sphere": {"scale": 0.3}});
+    viewer_15663377869586968.zoomTo();
+viewer_15663377869586968.render();
+});
+</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Molecule(name=&#39;H2O&#39; formula=&#39;H2O&#39; hash=&#39;b41d0c5&#39;)&gt;
+</pre></div></div>
+</div>
+<p>We can then provide minimal input for a quantum chemistry job which specifies the molecule, driver, and model that the computation should be run under:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">computation</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;molecule&quot;</span><span class="p">:</span> <span class="n">mol</span><span class="p">,</span>
+    <span class="s2">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;energy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;B3LYP&quot;</span><span class="p">,</span> <span class="s2">&quot;basis&quot;</span><span class="p">:</span> <span class="s2">&quot;6-31g&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">qcng</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">computation</span><span class="p">,</span> <span class="s2">&quot;psi4&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The result contains many attributes that hold relevant data. We can access the <code class="docutils literal notranslate"><span class="pre">return_result</span></code> which contains the desired value as determined by the <code class="docutils literal notranslate"><span class="pre">driver</span></code> input field. In this case, it is the B3LYP/6-31g energy (in Hartree):</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ret</span><span class="o">.</span><span class="n">return_result</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-76.2741297206346
+</pre></div></div>
+</div>
+<p>QCEngine automatically parses additional data about the state of the computation and pulls several other component fields. Here we can see the energy breakdown as well as the basis information:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ret</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;calcinfo_nbasis&#39;: 13,
+ &#39;calcinfo_nmo&#39;: 13,
+ &#39;calcinfo_nalpha&#39;: 5,
+ &#39;calcinfo_nbeta&#39;: 5,
+ &#39;calcinfo_natom&#39;: 3,
+ &#39;nuclear_repulsion_energy&#39;: 11.138071187457696,
+ &#39;return_energy&#39;: -76.2741297206346,
+ &#39;scf_one_electron_energy&#39;: -126.25159666378747,
+ &#39;scf_two_electron_energy&#39;: 46.556895182916136,
+ &#39;scf_xc_energy&#39;: -7.717499427220989,
+ &#39;scf_dipole_moment&#39;: [0.0, 0.0, 2.660795024634264],
+ &#39;scf_total_energy&#39;: -76.2741297206346,
+ &#39;scf_iterations&#39;: 6}
+</pre></div></div>
+</div>
+<p>Finally, QCEngine records much of the state of the computation such as the hardware it was run on, the program it was run with, and the versions of programs used:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ret</span><span class="o">.</span><span class="n">provenance</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;creator&#39;: &#39;Psi4&#39;,
+ &#39;version&#39;: &#39;1.3.2&#39;,
+ &#39;routine&#39;: &#39;psi4.json.run_json&#39;,
+ &#39;memory&#39;: 2.266,
+ &#39;nthreads&#39;: 2,
+ &#39;qcengine_version&#39;: &#39;v0.9.0&#39;,
+ &#39;wall_time&#39;: 2.847166061401367,
+ &#39;hostname&#39;: &#39;Daniels-MacBook-Pro.local&#39;,
+ &#39;cpu&#39;: &#39;Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz&#39;,
+ &#39;username&#39;: &#39;daniel&#39;}
+</pre></div></div>
+</div>
+</section>
+<section id="Procedures">
+<h2>Procedures<a class="headerlink" href="#Procedures" title="Permalink to this headline"></a></h2>
+<p>Since we created a pretty poor molecule to start with, we should optimize it first under a force field method to have a reasonable geometry. Here, we will use the standalone <code class="docutils literal notranslate"><span class="pre">geomeTRIC</span></code> package coupled with the <code class="docutils literal notranslate"><span class="pre">rdkit</span></code> force field evaluator.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">oh_bond</span><span class="p">,</span> <span class="n">hoh_angle</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">measure</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;O-H Bond length (Bohr): </span><span class="si">{</span><span class="n">oh_bond</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;H-O-H Angle (degrees):  </span><span class="si">{</span><span class="n">hoh_angle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+O-H Bond length (Bohr): 1.5
+H-O-H Angle (degrees):  90.0
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opt_input</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;rdkit&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;input_specification&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;driver&quot;</span><span class="p">:</span> <span class="s2">&quot;gradient&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;UFF&quot;</span><span class="p">},</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;initial_molecule&quot;</span><span class="p">:</span> <span class="n">mol</span>
+<span class="p">}</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">qcng</span><span class="o">.</span><span class="n">compute_procedure</span><span class="p">(</span><span class="n">opt_input</span><span class="p">,</span> <span class="s2">&quot;geometric&quot;</span><span class="p">)</span>
+<span class="n">opt</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Optimization(model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;b41d0c5&#39;)&gt;
+</pre></div></div>
+</div>
+<p>We can first check the geometry of the final molecule and see that it is something much more reasonable:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opt_mol</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">final_molecule</span>
+<span class="n">oh_bond</span><span class="p">,</span> <span class="n">hoh_angle</span> <span class="o">=</span> <span class="n">opt_mol</span><span class="o">.</span><span class="n">measure</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;O-H Bond length (Bohr): </span><span class="si">{</span><span class="n">oh_bond</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;H-O-H Angle (degrees):  </span><span class="si">{</span><span class="n">hoh_angle</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+O-H Bond length (Bohr): 1.8713297962085038
+H-O-H Angle (degrees):  104.5102429904286
+</pre></div></div>
+</div>
+<p>We can explore additional data generated with this geometry optimization including details of every gradient evaluation performed:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opt</span><span class="o">.</span><span class="n">trajectory</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;b41d0c5&#39;)&gt;,
+ &lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;1ad5fe3&#39;)&gt;,
+ &lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;04ec4cf&#39;)&gt;,
+ &lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;58054eb&#39;)&gt;,
+ &lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;f2a154b&#39;)&gt;,
+ &lt;Result(driver=&#39;gradient&#39; model=&#39;{&#39;method&#39;: &#39;UFF&#39;, &#39;basis&#39;: None}&#39; molecule_hash=&#39;3c65f4c&#39;)&gt;]
+</pre></div></div>
+</div>
+<p>If desired, we can also look at the standard output of the <code class="docutils literal notranslate"><span class="pre">geomeTRIC</span></code> program:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9 internal coordinates being used (instead of 9 Cartesians)
+Internal coordinate system (atoms numbered from 1):
+Distance 1-2
+Distance 1-3
+Angle 2-1-3
+Translation-X 1-3
+Translation-Y 1-3
+Translation-Z 1-3
+Rotation-A 1-3
+Rotation-B 1-3
+Rotation-C 1-3
+&lt;class &#39;geometric.internal.Distance&#39;&gt; : 2
+&lt;class &#39;geometric.internal.Angle&#39;&gt; : 1
+&lt;class &#39;geometric.internal.TranslationX&#39;&gt; : 1
+&lt;class &#39;geometric.internal.TranslationY&#39;&gt; : 1
+&lt;class &#39;geometric.internal.TranslationZ&#39;&gt; : 1
+&lt;class &#39;geometric.internal.RotationA&#39;&gt; : 1
+&lt;class &#39;geometric.internal.RotationB&#39;&gt; : 1
+&lt;class &#39;geometric.internal.RotationC&#39;&gt; : 1
+Step    0 : Gradient = 1.686e-01/1.827e-01 (rms/max) Energy =  0.0180063792
+Hessian Eigenvalues: 5.00000e-02 5.00000e-02 5.00000e-02 ... 1.60000e-01 1.14610e+00 1.14610e+00
+Step    1 : Displace = 1.073e-01/1.303e-01 (rms/max) Trust = 1.000e-01 (=) Grad = 1.080e-01/1.234e-01 (rms/max) E (change) =  0.0065007416 (-1.151e-02) Quality = 0.413
+Hessian Eigenvalues: 5.00000e-02 5.00000e-02 5.00000e-02 ... 1.95811e-01 4.90425e-01 1.14610e+00
+Step    2 : Displace = 8.518e-02/1.017e-01 (rms/max) Trust = 1.000e-01 (=) Grad = 1.592e-02/2.161e-02 (rms/max) E (change) =  0.0001690891 (-6.332e-03) Quality = 0.307
+Hessian Eigenvalues: 5.00000e-02 5.00000e-02 5.00000e-02 ... 2.02540e-01 4.27767e-01 1.14610e+00
+Step    3 : Displace = 1.326e-02/1.817e-02 (rms/max) Trust = 1.000e-01 (=) Grad = 1.744e-03/2.373e-03 (rms/max) E (change) =  0.0000051046 (-1.640e-04) Quality = 0.317
+Hessian Eigenvalues: 5.00000e-02 5.00000e-02 5.00000e-02 ... 1.68278e-01 4.49086e-01 1.14610e+00
+Step    4 : Displace = 4.295e-03/4.443e-03 (rms/max) Trust = 1.000e-01 (=) Grad = <span class="ansi-green-intense-fg">1.311e-04</span>/<span class="ansi-green-intense-fg">1.413e-04</span> (rms/max) E (change) =  0.0000000164 (-5.088e-06) Quality = 0.287
+Hessian Eigenvalues: 5.00000e-02 5.00000e-02 5.00000e-02 ... 1.63098e-01 4.53449e-01 1.14610e+00
+Step    5 : Displace = <span class="ansi-green-intense-fg">2.091e-04</span>/<span class="ansi-green-intense-fg">2.541e-04</span> (rms/max) Trust = 1.000e-01 (=) Grad = <span class="ansi-green-intense-fg">9.256e-06</span>/<span class="ansi-green-intense-fg">1.015e-05</span> (rms/max) E (change) =  0.0000000001 (<span class="ansi-green-intense-fg">-1.632e-08</span>) Quality = 0.294
+Converged! =D
+
+</pre></div></div>
+</div>
+</section>
+<section id="Conclusion">
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Permalink to this headline"></a></h2>
+<p>These are some of the capabilities QCEngine offers, check out more <a class="reference external" href="http://docs.qcarchive.molssi.org/projects/QCEngine">documentation</a>. If you like the project, consider starring us on <a class="reference external" href="https://github.com/MolSSI/QCEngine">GitHub</a> or if you have any questions, join our <a class="reference external" href="https://join.slack.com/t/qcdb/shared_invite/enQtNDIzNTQ2OTExODk0LWM3OTgxN2ExYTlkMTlkZjA0OTExZDlmNGRlY2M4NWJlNDlkZGQyYWUxOTJmMzc3M2VlYzZjMjgxMDRkYzFmOTE">Slack</a> channel.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="QCElemental.html" class="btn btn-neutral float-left" title="QCElemental" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="QCFractal.html" class="btn btn-neutral float-right" title="QCFractal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2021, The Molecular Sciences Software Institute.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
